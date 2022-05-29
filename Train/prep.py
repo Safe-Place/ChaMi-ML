@@ -18,6 +18,8 @@ anchor = tf.data.Dataset.list_files(anc_images).take(n_images)
 positive = tf.data.Dataset.list_files(pos_images).take(n_images)
 negative = tf.data.Dataset.list_files(neg_images, seed=32).take(n_images)
 
+# TRANSFORM prep
+
 # Resize and scale each image
 def resize_scale(image_path):
   byte_img = tf.io.read_file(image_path)  # as encoder
@@ -40,3 +42,16 @@ data = positives.concatenate(negatives)
 # Preprocessing image function
 def preprocess(inp_img, val_img, label):
   return (resize_scale(inp_img), resize_scale(val_img), label)
+
+#LOAD prep
+
+# Load data into TF dataloader (data pipelining)
+data = data.map(preprocess).cache().shuffle(buffer_size=1024)
+
+# Training data (70% for training, 16 batches, and start preprocessing the next 8 set of images)
+n_train = round(len(data)*0.7)
+train_data = data.take(n_train).batch(16).prefetch(8)
+
+# Testing data
+n_test = len(data) - n_train
+test_data = data.skip(n_train).take(n_test).batch(16).prefetch(8)

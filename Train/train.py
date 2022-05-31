@@ -16,10 +16,10 @@ train_acc_metric = tf.keras.metrics.BinaryAccuracy('train_accuracy')
 val_acc_metric = tf.keras.metrics.BinaryAccuracy('val_accuracy')
 
 # Training checkpoints
-os.makedirs('training_checkpoints')
-checkpoint_directory = './training_checkpoints'
-checkpoint_prefix = os.path.join(checkpoint_directory, 'ckpt')
-checkpoint = tf.train.Checkpoint(optimizer=optimizer, model=model)
+#os.makedirs('training_checkpoints')
+#checkpoint_directory = './training_checkpoints'
+#checkpoint_prefix = os.path.join(checkpoint_directory, 'ckpt')
+#checkpoint = tf.train.Checkpoint(optimizer=optimizer, model=model)
 
 # Train step function with tf function to ran TensorFlow eagerly
 @tf.function
@@ -114,5 +114,5 @@ def train_model(train_data, val_data, epochs):
     val_acc_metric.reset_states()
 
     # Checkpoints
-    if epoch % 5 == 0:
-      checkpoint.save(file_prefix=checkpoint_prefix)
+    #if epoch % 5 == 0:
+    #  checkpoint.save(file_prefix=checkpoint_prefix)

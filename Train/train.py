@@ -1,6 +1,9 @@
 # Import library required
-import os, datetime
+import os, datetime, model
 import tensorflow as tf
+
+# instantiate model
+model = model.create_siamese_model()
 
 # set optimizer and loss function
 optimizer = tf.keras.optimizers.Adam(1e-4)

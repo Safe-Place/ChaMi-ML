@@ -1,1 +1,6 @@
 setup_remote.ipynb
+
+Train/data/*.zip
+Train/data/anchor
+Train/data/positive
+Train/data/negative

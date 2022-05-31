@@ -13,7 +13,7 @@ train_acc_metric = tf.keras.metrics.BinaryAccuracy('train_accuracy')
 val_acc_metric = tf.keras.metrics.BinaryAccuracy('val_accuracy')
 
 # Training checkpoints
-!mkdir training_checkpoints
+os.makedirs('training_checkpoints')
 checkpoint_directory = './training_checkpoints'
 checkpoint_prefix = os.path.join(checkpoint_directory, 'ckpt')
 checkpoint = tf.train.Checkpoint(optimizer=optimizer, model=model)

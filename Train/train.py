@@ -1,5 +1,5 @@
 # Import library required
-import os, datetime, model
+import os, datetime, model, time
 import tensorflow as tf
 
 # instantiate model

@@ -1,5 +1,5 @@
 # Import library required
-import os, datetime, model, time
+import datetime, model, time
 import tensorflow as tf
 
 # Train step function with tf function to ran TensorFlow eagerly

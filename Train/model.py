@@ -35,7 +35,7 @@ class L1_siamese_dist(Layer):
         return abs(input_embedding-validation_embedding)
 
 def create_siamese_model():
-    random.seed(123)
+    random.set_seed(123)
     # Anchor image input
     input_img = Input(shape=(105,105,3), name='Input_img')
     

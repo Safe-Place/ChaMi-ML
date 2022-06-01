@@ -1,9 +1,9 @@
 # Import library required
-import os, datetime, model
+import os, datetime, model, time
 import tensorflow as tf
 
 # instantiate model
-model = model.create_siamese_model()
+#model = model.create_siamese_model()
 
 # set optimizer and loss function
 optimizer = tf.keras.optimizers.Adam(1e-4)
@@ -31,14 +31,14 @@ def train_step(batch):
     y = batch[-1]
 
     # Forward prop
-    ypred = model(X, training=True)
+    ypred = my_model(X, training=True)
     # Calculate the loss
     loss = binary_loss(y, ypred)
   
   # Calculate the gradients
-  grad = tape.gradient(loss, model.trainable_variables)
+  grad = tape.gradient(loss, my_model.trainable_variables)
   # Calculate updated weights and apply to model
-  optimizer.apply_gradients(zip(grad, model.trainable_variables))
+  optimizer.apply_gradients(zip(grad, my_model.trainable_variables))
   train_loss_metric(loss)
   train_acc_metric.update_state(y, ypred)
 
@@ -53,7 +53,7 @@ def test_step(batch):
   y = batch[-1]
   
   # Make prediction
-  ypred = model(X, training=False)
+  ypred = my_model(X, training=False)
   loss = binary_loss(y, ypred)
   val_loss_metric(loss)
   val_acc_metric.update_state(y, ypred)
@@ -66,7 +66,7 @@ train_summary_writer = tf.summary.create_file_writer(train_log_dir)
 test_summary_writer = tf.summary.create_file_writer(test_log_dir)
 
 # Train loop function
-def train_model(train_data, val_data, epochs):
+def train_model(train_data, val_data, epochs, my_model):
   # Loop epoch
   for epoch in range(1, epochs+1):
     print(f'\nEpoch {epoch}/{epochs}')

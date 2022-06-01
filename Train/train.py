@@ -1,5 +1,5 @@
 # Import library required
-import os, datetime, model, time
+import os, datetime, model, time, shutil
 import tensorflow as tf
 
 # Train step function with tf function to ran TensorFlow eagerly
@@ -40,7 +40,10 @@ def test_step(batch):
   val_acc_metric.update_state(y, ypred)
 
 # Train loop function
-def train_model(train_data, val_data, epochs, my_model):
+def train_model(train_data, val_data, epochs):
+  # instantiate the model
+  my_model = model.create_siamese_model()
+  
   # set optimizer and loss function
   optimizer = tf.keras.optimizers.Adam(1e-4)
   binary_loss = tf.losses.BinaryCrossentropy()
@@ -51,12 +54,6 @@ def train_model(train_data, val_data, epochs, my_model):
   train_acc_metric = tf.keras.metrics.BinaryAccuracy('train_accuracy')
   val_acc_metric = tf.keras.metrics.BinaryAccuracy('val_accuracy')
 
-  # Training checkpoints
-  os.makedirs('training_checkpoints')
-  checkpoint_directory = './training_checkpoints'
-  checkpoint_prefix = os.path.join(checkpoint_directory, 'ckpt')
-  checkpoint = tf.train.Checkpoint(optimizer=optimizer, model=my_model)
-  
   # Set up summary writers to write the summaries to disk in a different logs directory
   current_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
   train_log_dir = 'logs/gradient_tape/' + current_time + '/train'
@@ -109,7 +106,5 @@ def train_model(train_data, val_data, epochs, my_model):
     train_acc_metric.reset_states()
     val_loss_metric.reset_states()
     val_acc_metric.reset_states()
-
-    # Checkpoints
-    if epoch % 5 == 0:
-      checkpoint.save(file_prefix=checkpoint_prefix)
+    
+    return my_model

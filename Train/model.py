@@ -1,11 +1,13 @@
-
 # Import library required
 from tensorflow.keras.models import Model, Sequential
 from tensorflow.keras.layers import Layer, Conv2D, Dense, MaxPooling2D, Input, Flatten
+from tensorflow import random
 from tensorflow.math import abs
 
 # CNN Embedding Layer
 def create_embedding():
+    # set random seed
+    random.set_seed(123)
     cnn = Sequential([
         # Input and feature maps
         Conv2D(64, (10,10), activation='relu', input_shape=(105,105,3), name='Conv1'),
@@ -33,6 +35,7 @@ class L1_siamese_dist(Layer):
         return abs(input_embedding-validation_embedding)
 
 def create_siamese_model():
+    random.seed(123)
     # Anchor image input
     input_img = Input(shape=(105,105,3), name='Input_img')
     

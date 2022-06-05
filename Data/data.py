@@ -17,11 +17,11 @@ def preprocess(inp_img, val_img, label):
   return (resize_scale(inp_img), resize_scale(val_img), label)
 
 def train_test_split():
-  subprocess.call(["./GetUnzipImg.sh"])
+  subprocess.call(["../Data/GetUnzipImg.sh"])
   time.sleep(5)
 
-  # Get current directory
-  BASE_DIR = os.getcwd()
+  # Get image directory
+  BASE_DIR = os.path.abspath('../Data')
 
   # Define path
   ANC_DIR = os.path.join(BASE_DIR, 'anchor')

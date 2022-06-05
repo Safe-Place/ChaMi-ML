@@ -3,8 +3,9 @@ Train/*.zip
 Train/anchor
 Train/positive
 Train/negative
-Data/*.zip
-Train/training_checkpoints
+Data/anchor
+Data/positive
+Data/negative
 Models/1
 Models/modeltfjs-h5
 Models/mymodeltfjs

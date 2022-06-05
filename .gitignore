@@ -1,12 +1,13 @@
-setup_remote.ipynb
 
 Train/*.zip
 Train/anchor
 Train/positive
 Train/negative
 Data/*.zip
-Data/anchor
-Data/positive
-Data/negative
 Train/training_checkpoints
-Models
+Models/1
+Models/modeltfjs-h5
+Models/mymodeltfjs
+Models/saved_model
+Models/my_model.h5
+Models/*.tflite

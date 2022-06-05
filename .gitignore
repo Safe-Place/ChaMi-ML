@@ -1,4 +1,4 @@
-
+Train/training_checkpoints
 Train/*.zip
 Train/anchor
 Train/positive

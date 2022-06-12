@@ -1,6 +1,6 @@
 # Import library required
 from tensorflow.keras.models import Model, Sequential
-from tensorflow.keras.layers import Layer, Conv2D, Dense, MaxPooling2D, Input, Flatten
+from tensorflow.keras.layers import Layer, Conv2D, Dense, MaxPooling2D, Input, Flatten, Dropout
 from tensorflow import random
 from tensorflow.math import abs
 from tensorflow.keras import backend as k

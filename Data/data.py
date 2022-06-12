@@ -12,9 +12,9 @@ def install_and_import(package):
         globals()[package] = importlib.import_module(package)
 
 
---------------
+#--------------
 # For Model v1
---------------
+#--------------
 
 # Resize and scale each image
 def resize_scale(image_path):
@@ -74,9 +74,9 @@ def train_test_split():
 
   return train_data, test_data
 
---------------
+#--------------
 # For model v2
---------------
+#--------------
 
 # Crop the face with mtcnn
 def extract_face(filename, size=(105, 105)):

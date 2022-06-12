@@ -127,7 +127,7 @@ def train_test_split_v2():
   anchor, positive, negative = get_listdir_images()
   
   # Get all faces on entire images
-  anc_images, pos_images, neg_images = all_images(anchor, positive, negative)
+  anc_images, pos_images, neg_images = extract_all_faces(anchor, positive, negative)
   
   # Create labelled data
   # Pair (anchor) with (positive) becomes 1 (positive pairs)

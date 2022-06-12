@@ -3,6 +3,11 @@ from tensorflow.keras.models import Model, Sequential
 from tensorflow.keras.layers import Layer, Conv2D, Dense, MaxPooling2D, Input, Flatten
 from tensorflow import random
 from tensorflow.math import abs
+from tensorflow.keras import backend as k
+
+#-------------
+# For Model v1
+#-------------
 
 # CNN Embedding Layer
 def create_embedding():
@@ -34,7 +39,44 @@ class L1_siamese_dist(Layer):
     def call(self, input_embedding, validation_embedding):
         return abs(input_embedding-validation_embedding)
 
-def create_siamese_model():
+#-------------
+# For Model v2
+#-------------
+
+# CNN Embedding Layer
+def create_embedding_v2():
+  cnn = Sequential([
+        Conv2D(96, (11,11), activation='relu', padding='same', input_shape=(105, 105, 3), name='Conv1'),
+        MaxPooling2D(pool_size=(2,2), name='Pool1'),
+        Dropout(0.3),
+
+        Conv2D(256, (5,5), activation='relu', padding='same', name='Conv2'),
+        MaxPooling2D(pool_size=(2,2), name='Pool2'),
+        Dropout(0.3),
+
+        Conv2D(384, (3,3), activation='relu', padding='same', name='Conv3'),
+        MaxPooling2D(pool_size=(2,2), name='Pool3'),
+        Dropout(0.3),
+        
+        GlobalAveragePooling2D(),
+        Dense(1024),
+        Dense(128)
+    ])
+  cnn._name= 'Embedding'
+  return cnn
+
+# L2 Distance Layer
+class L2_siamese_dist(Layer):
+  def __init__(self, **kwargs):
+      super().__init__()
+  
+  # Similarity calculation    
+  def call(self, input_embedding, validation_embedding):
+    sum_squared = k.sum(k.square(input_embedding - validation_embedding), axis=1, keepdims=True)
+    return k.sqrt(k.maximum(sum_squared, k.epsilon()))
+
+# Siamese neural network model
+def create_siamese_model(embedding, distance):
     #random.set_seed(123)
     # Anchor image input
     input_img = Input(shape=(105,105,3), name='Input_img')
@@ -43,8 +85,7 @@ def create_siamese_model():
     validation_img = Input(shape=(105,105,3), name='Validaiton_img')
     
     # Siamese distance
-    embedding = create_embedding()
-    siamese_dist = L1_siamese_dist()
+    siamese_dist = distance()
     siamese_dist._name = 'Distance'
     distances = siamese_dist(embedding(input_img), embedding(validation_img))
     

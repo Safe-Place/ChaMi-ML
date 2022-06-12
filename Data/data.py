@@ -1,5 +1,6 @@
 import os, subprocess, time
 import tensorflow as tf
+import numpy as np
 
 def install_and_import(package):
     import importlib

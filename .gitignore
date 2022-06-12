@@ -1,4 +1,5 @@
 Train/training_checkpoints
+Train/training_checkpoints_v2
 Train/*.zip
 Data/anchor
 Data/positive

@@ -105,6 +105,8 @@ def extract_face(filename, size=(100, 100)):
 
 # extract all faces on entire images
 def extract_all_faces(anc_dir, pos_dir, neg_dir):
+  install_and_import('mtcnn') # import library mtcnn
+  
   anc_list = []
   pos_list = []
   neg_list = []

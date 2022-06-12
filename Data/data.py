@@ -79,7 +79,7 @@ def train_test_split():
 --------------
 
 # Crop the face with mtcnn
-def extract_face(filename, size=(100, 100)):
+def extract_face(filename, size=(105, 105)):
   install_and_import('mtcnn')
   image = tf.io.read_file(filename)  # as encoder
   # Decode

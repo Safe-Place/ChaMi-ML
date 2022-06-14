@@ -1,7 +1,7 @@
 import os
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
-from utils import predict
+from utils import predict_person
 #from flask_cors import CORS
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
@@ -25,7 +25,7 @@ def predict():
         try:
             input_image_url = files[-1]
             verification_urls = files[:-1]
-            pred = predict(input_image_url, verification_urls)
+            pred = predict_person(input_image_url, verification_urls)
             result = ""
             if pred:
                 result = 'verified'

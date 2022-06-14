@@ -3,6 +3,8 @@ import cv2
 import numpy as np
 from distance import L2_siamese_dist
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+
 
 model = tf.keras.models.load_model(
     'my_model_v2.h5',
@@ -10,9 +12,7 @@ model = tf.keras.models.load_model(
 )
 
 def transform_image(path_image):
-    image = tf.io.read_file(path_image)
-    # Decode
-    image = tf.io.decode_jpeg(image)
+    image = tf.keras.preprocessing.load_img(path_image)
     # Convert to array
     array = tf.keras.preprocessing.image.img_to_array(image).astype('uint8')
     #image = np.asarray(image)
@@ -30,16 +30,16 @@ def transform_image(path_image):
     # Scaling the image to be range 0 and 1
     image /= 255.0
     # Fix the shape of the image that will be fed to the model
-    #image = np.expand_dims(image, axis=0)
+    image = np.expand_dims(image, axis=0)
     return image
 
-def predict(verification_urls, input_image_url, recognition_threshold=0.5, verification_threshold=0.6):
+def predict(input_image_url, verification_urls, recognition_threshold=0.5, verification_threshold=0.6):
+    inp_img = transform_image(input_image_url)
     # Result predictions
     results = []
     for verification_url in verification_urls:
-        inp_img = transform_image(input_image_url)    
         val_img = transform_image(verification_url)
-        result = model.predict(list(np.expand_dims([inp_img, val_img], axis=1)))
+        result = model.predict([inp_img, val_img])
         results.append(result)
   
     recognition = np.sum(np.array(results) > recognition_threshold)
@@ -49,22 +49,31 @@ def predict(verification_urls, input_image_url, recognition_threshold=0.5, verif
     return verified
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        files = request.files.getlist('images')
+        files = request.files.getlist('file')
         if files is None or len(files) != 11:
             return jsonify({'error': 'not enough file'})
         
         try:
-            input_image_url = files[0]
-            verification_urls = files[1:]
+            input_image_url = files[-1]
+            verification_urls = files[:-1]
             pred = predict(input_image_url, verification_urls)
-            return jsonify({'pred': pred})
+            result = ""
+            if pred:
+                result = 'verified'
+            else:
+                result = 'unknown'
+
+            return jsonify({'pred': result})
 
         except Exception as e:
             return jsonify({'error': str(e)})
+    return 'OK'
 
 if __name__ == "__main__":
     app.run(debug=True)
+    #app.run(debug=True,host='0.0.0.0',port=int(os.environ.get("PORT",8080)))

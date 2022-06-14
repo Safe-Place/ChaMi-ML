@@ -33,7 +33,7 @@ model = load_model(
     custom_objects={'L2_siamese_dist':L2_siamese_dist}
 )
 
-def predict(input_image_url, verification_urls, recognition_threshold=0.5, verification_threshold=0.6):
+def predict_person(input_image_url, verification_urls, recognition_threshold=0.5, verification_threshold=0.6):
     inp_img = transform_image(input_image_url)
     # Result predictions
     results = []

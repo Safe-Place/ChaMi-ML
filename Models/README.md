@@ -6,6 +6,10 @@
 - https://www.tensorflow.org/guide/keras/train_and_evaluate
 - https://www.tensorflow.org/tensorboard/get_started
 
+**Saved Model**
+- Model v1 : https://drive.google.com/drive/folders/18YeZR6_ifgNXmnLQ4ash7lOsKZTEKVZR?usp=sharing
+- Model v2 : https://drive.google.com/drive/folders/1fYxxxXd-kpdLj3DxLTq0-QgIC4-Q5ImF?usp=sharing
+
 **Project Structure**
 -
 ```

@@ -1,5 +1,11 @@
-# ChaMi-ML
+# Face Recognition
+--This is a final project assignment-- <br/>
+We create a Tensorflow model to implement Face Recognition in the Apps
+Lock feature section. This feature is handy if other users try to access our data without our
+knowledge, so the unknown user can't access this application.
 
+**Project Structure**
+-
 ```
 .gitignore
 Data

@@ -10,6 +10,10 @@
 - Model v1 : https://drive.google.com/drive/folders/18YeZR6_ifgNXmnLQ4ash7lOsKZTEKVZR?usp=sharing
 - Model v2 : https://drive.google.com/drive/folders/1fYxxxXd-kpdLj3DxLTq0-QgIC4-Q5ImF?usp=sharing
 
+**Model Architecture**
+- Model v1 : https://drive.google.com/drive/folders/1nZQclUW7azn57e6mLTAeFczZiozbncV2?usp=sharing
+- Model v2 : https://drive.google.com/drive/folders/1q1jj4qTB2F8pTRCpGd5n8EGEiX4fAhKT?usp=sharing
+
 **Project Structure**
 -
 ```

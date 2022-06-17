@@ -11,8 +11,10 @@
 - Model v2 : https://drive.google.com/drive/folders/1fYxxxXd-kpdLj3DxLTq0-QgIC4-Q5ImF?usp=sharing
 
 **Model Architecture**
-- Model v1 : https://drive.google.com/drive/folders/1nZQclUW7azn57e6mLTAeFczZiozbncV2?usp=sharing
-- Model v2 : https://drive.google.com/drive/folders/1q1jj4qTB2F8pTRCpGd5n8EGEiX4fAhKT?usp=sharing
+- Model v1 : ![model v1.png]( {https://drive.google.com/file/d/1C0ds2Vvlpj20AxOny0IQjt_7T5nIGUh_/view?usp=sharing})
+- Model Embedding v1 : ![model embedding v1.png]( {https://drive.google.com/file/d/14S5Nx18MYX0j_3y9SzR_SVCi-HdVJY_p/view?usp=sharing})
+- Model v2 : ![model v2.png]( {https://drive.google.com/file/d/12WNpWIkc2M3RGRGJGDVGcIhVwXIR5g3V/view?usp=sharing})
+- Model Embedding v2 : ![model embedding v2.png]( {https://drive.google.com/file/d/11IRU1Z6wysMz3h51sKhdJgGrWSOTmMWw/view?usp=sharing})
 
 **Project Structure**
 -

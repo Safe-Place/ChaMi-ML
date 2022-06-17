@@ -1,3 +1,14 @@
+# Custom Training Models with tf functions
+
+**Reference**
+
+- https://www.tensorflow.org/guide/function
+- https://www.tensorflow.org/guide/keras/writing_a_training_loop_from_scratch
+- https://www.tensorflow.org/api_docs/python/tf/keras/metrics/BinaryAccuracy
+- https://www.machinelearningplus.com/deep-learning/how-use-tf-function-to-speed-up-python-code-tensorflow/
+
+
+
 ```
 Train
 ├── anchor.zip

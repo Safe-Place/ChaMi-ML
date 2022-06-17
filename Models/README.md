@@ -11,8 +11,8 @@
 - Model v2 : https://drive.google.com/drive/folders/1fYxxxXd-kpdLj3DxLTq0-QgIC4-Q5ImF?usp=sharing
 
 **Model Architecture**
-- Model v1 : ![model v1.png]( {https://drive.google.com/file/d/1C0ds2Vvlpj20AxOny0IQjt_7T5nIGUh_/view?usp=sharing})
-- Model Embedding v1 : ![model embedding v1.png]( {https://drive.google.com/file/d/14S5Nx18MYX0j_3y9SzR_SVCi-HdVJY_p/view?usp=sharing})
+- Model v1 : ![model v1.png]( {https://raw.githubusercontent.com/Safe-Place/ChaMi-ML/main/Models/model%20v1/model%201.1%20v1.png?token=GHSAT0AAAAAABSFWREIKLS33U66HPXRVVJ6YVMQY4Q})
+- Model Embedding v1 : ![model embedding v1.png]( {https://raw.githubusercontent.com/Safe-Place/ChaMi-ML/main/Models/model%20v1/model%201.2%20v1.png})
 - Model v2 : ![model v2.png]( {https://drive.google.com/file/d/12WNpWIkc2M3RGRGJGDVGcIhVwXIR5g3V/view?usp=sharing})
 - Model Embedding v2 : ![model embedding v2.png]( {https://drive.google.com/file/d/11IRU1Z6wysMz3h51sKhdJgGrWSOTmMWw/view?usp=sharing})
 

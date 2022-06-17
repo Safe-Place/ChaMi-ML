@@ -1,3 +1,11 @@
+**Research Model Reference**
+- Link Paper : https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf
+- Others : https://www.youtube.com/playlist?list=PLdaSUfwhSMfSX-evq5arvP375pycIjCGM
+
+**Model Evaluation Reference**
+- https://www.tensorflow.org/guide/keras/train_and_evaluate
+- https://www.tensorflow.org/tensorboard/get_started
+
 ```
 Models
 ├── 1
